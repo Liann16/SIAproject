@@ -277,24 +277,92 @@
         function getBotResponse(message) {
             const lowerMessage = message.toLowerCase();
             
-            // Simple response logic
-            if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-                return "Hello! How can I assist you with TMC Gymnastics Academy?";
+            // Branch schedule responses
+            if (lowerMessage.includes('malolos')) {
+                return "Malolos City Branch (JCAS Gymnastics) Schedule:\n" +
+                       "Days: Monday, Wednesday, Friday\n" +
+                       "Timeslots:\n" +
+                       "• 1:00 pm - 2:30 pm\n" +
+                       "• 2:30 pm - 3:30 pm\n" +
+                       "\nLocation: 112 Lucero St, Malolos, 3000 Bulacan";
+            }
+            else if (lowerMessage.includes('baliwag') || lowerMessage.includes('baliuag')) {
+                return "Baliwag City Branch (MDSF Gymnastics) Schedule:\n" +
+                       "Days: Tuesday, Thursday, Saturday\n" +
+                       "Timeslots:\n" +
+                       "• 9:00 am - 10:30 am\n" +
+                       "• 10:30 am - 12:00 pm\n" +
+                       "\nLocation: 090 Benigno S. Aquino Avenue, Baliwag, 3006 Bulacan";
+            }
+            else if (lowerMessage.includes('meycauayan')) {
+                return "Meycauayan City Branch (Trinitas Gymnastics) Schedule:\n" +
+                       "Days: Monday, Tuesday, Friday\n" +
+                       "Timeslots:\n" +
+                       "• 9:00 am - 10:30 am\n" +
+                       "• 10:30 am - 12:00 pm\n" +
+                       "\nLocation: Jupiter St., 3A Meycauayan Camalig, 3020 Bulacan";
+            }
+            else if (lowerMessage.includes('angeles')) {
+                return "Angeles City Branch (WIS Gymnastics) Schedule:\n" +
+                       "Days: Monday, Wednesday, Friday\n" +
+                       "Timeslots:\n" +
+                       "• 9:00 am - 10:30 am\n" +
+                       "• 10:30 am - 12:00 pm\n" +
+                       "\nLocation: 21-2 Fil-Am Friendship Hwy, Porac, Pampanga";
+            }
+            else if (lowerMessage.includes('bacolor')) {
+                return "Bacolor Pampanga Branch (Bacolor Gymnastics) Schedule:\n" +
+                       "Days: Tuesday, Thursday, Saturday\n" +
+                       "Timeslots for Beginners:\n" +
+                       "• 8:00 am - 9:30 am\n" +
+                       "• 9:30 am - 11:00 am\n" +
+                       "\nLocation: Don Bosco Homes Bacolor Pampanga";
+            }
+            // General schedule inquiry
+            else if (lowerMessage.includes('schedule') || lowerMessage.includes('time') || lowerMessage.includes('class time')) {
+                return "We have different schedules for each branch. Which branch are you interested in?\n\n" +
+                       "• Malolos City\n" +
+                       "• Baliwag City\n" +
+                       "• Meycauayan City\n" +
+                       "• Angeles City\n" +
+                       "• Bacolor Pampanga\n\n" +
+                       "Just type the branch name and I'll provide the detailed schedule!";
+            }
+            // Original responses
+            else if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                return "Hello! How can I assist you with TMC Gymnastics Academy? I can help you with program information, schedules, locations, and more!";
             }
             else if (lowerMessage.includes('program') || lowerMessage.includes('class')) {
-                return "We offer three main programs: Recreational Gymnastics, Competitive Team, and DepEd Team. Which one would you like to know more about?";
+                return "We offer three main programs:\n\n" +
+                       "1. Recreational Gymnastics - Fun and foundational classes for all ages\n" +
+                       "2. Competitive Team - Advanced training for competitive athletes\n" +
+                       "3. DepEd Team - Focused training for school competitions\n\n" +
+                       "Which program would you like to know more about?";
             }
             else if (lowerMessage.includes('location') || lowerMessage.includes('branch')) {
-                return "We have branches in Malolos, Baliwag, Meycauayan, Angeles City, and Bacolor Pampanga. Which location is most convenient for you?";
+                return "We have 5 branches:\n\n" +
+                       "• Malolos City (JCAS Gymnastics)\n" +
+                       "• Baliwag City (MDSF Gymnastics)\n" +
+                       "• Meycauayan City (Trinitas Gymnastics)\n" +
+                       "• Angeles City (WIS Gymnastics)\n" +
+                       "• Bacolor Pampanga (Bacolor Gymnastics)\n\n" +
+                       "Which location would you like to know more about? I can provide you with the address and class schedule!";
             }
             else if (lowerMessage.includes('cost') || lowerMessage.includes('price') || lowerMessage.includes('fee')) {
                 return "Program fees vary depending on the level and frequency. Please contact us at tmcgymnastic@gmail.com for detailed pricing information.";
             }
             else if (lowerMessage.includes('contact') || lowerMessage.includes('email')) {
-                return "You can reach us at tmcgymnastic@gmail.com or visit our Facebook page @TMCGymnaticsAcademy";
+                return "You can reach us at:\n" +
+                       "Email: tmcgymnastic@gmail.com\n" +
+                       "Facebook: @TMCGymnaticsAcademy";
             }
             else {
-                return "Thank you for your message. For specific inquiries, please email us at tmcgymnastic@gmail.com or message us on Facebook @TMCGymnaticsAcademy";
+                return "Thank you for your message! I can help you with:\n\n" +
+                       "• Class schedules (by branch)\n" +
+                       "• Program information\n" +
+                       "• Branch locations\n" +
+                       "• Contact details\n\n" +
+                       "What would you like to know more about?";
             }
         }
     </script>
