@@ -253,7 +253,9 @@ nav {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
 }
 
 .branch-card:hover {
@@ -272,6 +274,54 @@ nav {
 
 .branch-card strong {
     color: var(--secondary-color);
+}
+
+.schedule-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    margin-top: 1rem;
+    opacity: 0;
+}
+
+.branch-card.active .schedule-details {
+    max-height: 300px;
+    opacity: 1;
+    transition: max-height 0.5s ease-in, opacity 0.3s ease-in;
+}
+
+.schedule-details h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.schedule-details ul {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+}
+
+.schedule-details li {
+    margin-bottom: 0.3rem;
+    color: var(--dark-gray);
+}
+
+.schedule-details em {
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+.click-hint {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.branch-card.active .click-hint {
+    display: none;
 }
 
 /* About Section */
