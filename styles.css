@@ -259,51 +259,57 @@ nav {
 }
 
 /* Coaches Section */
-.coaches-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+.coaches-title {
+    color: var(--primary-color) !important;
+    font-size: 3.5rem !important;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.coaches-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.coach-item {
+    display: flex;
+    align-items: flex-start;
     gap: 2rem;
     padding: 1rem;
 }
 
-.coach-card {
-    background: var(--white);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    text-align: center;
-}
-
-.coach-card:hover {
-    transform: translateY(-5px);
-}
-
-.coach-card img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
+.coach-item img {
+    width: 200px;
+    height: 200px;
     object-fit: cover;
-    margin-bottom: 1rem;
-    border: 3px solid var(--primary-color);
 }
 
-.coach-card h3 {
-    color: var(--secondary-color);
+.coach-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.coach-info h3 {
+    color: var(--dark-gray);
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    font-size: 1.2rem;
+    font-weight: bold;
 }
 
-.coach-title {
-    color: var(--primary-color);
-    font-weight: bold;
+.coach-info .coach-title {
+    color: var(--dark-gray);
+    font-size: 1.2rem;
     margin-bottom: 0.3rem;
 }
 
-.coach-nickname {
+.coach-info .coach-nickname {
     color: var(--dark-gray);
-    font-style: italic;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
 }
 
 /* About Section */
@@ -417,12 +423,22 @@ footer {
         height: 35px;
     }
 
-    .coaches-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 1.5rem;
+    .coaches-title {
+        font-size: 2.5rem !important;
     }
 
-    .coach-card img {
+    .coach-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .coach-info {
+        align-items: center;
+    }
+
+    .coach-item img {
         width: 150px;
         height: 150px;
     }
