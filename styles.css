@@ -272,21 +272,33 @@ nav {
 .branch-card h3 {
     color: var(--primary-color);
     margin-bottom: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
-.branch-card p {
-    margin-bottom: 0.5rem;
+.branch-basic-info {
+    margin-bottom: 1rem;
 }
 
-.branch-card strong {
-    color: var(--secondary-color);
+.branch-name {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.address-block {
+    margin-bottom: 1.5rem;
+}
+
+.address-block p {
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
 }
 
 .branch-card .short-desc {
     display: block;
-    margin: 1rem 0;
-    color: var(--dark-gray);
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-top: 1.5rem;
+    cursor: pointer;
 }
 
 .branch-card.active .short-desc {
@@ -295,7 +307,9 @@ nav {
 
 .schedule-details {
     display: none;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
 }
 
 .branch-card.active .schedule-details {
@@ -305,24 +319,30 @@ nav {
 
 .schedule-details h4 {
     color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.schedule-details p {
     margin-bottom: 0.5rem;
-    font-size: 1.1rem;
 }
 
 .schedule-details ul {
     list-style: none;
     padding-left: 1rem;
-    margin: 0.5rem 0;
+    margin: 0.5rem 0 1rem;
 }
 
 .schedule-details li {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     color: var(--dark-gray);
 }
 
 .schedule-details em {
     color: var(--primary-color);
     font-style: italic;
+    display: block;
+    margin: 0.5rem 0;
 }
 
 .click-hint {
