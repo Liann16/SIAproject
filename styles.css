@@ -256,10 +256,17 @@ nav {
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
+    border: 2px solid transparent;
 }
 
 .branch-card:hover {
     transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.branch-card.active {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
 }
 
 .branch-card h3 {
@@ -276,18 +283,24 @@ nav {
     color: var(--secondary-color);
 }
 
+.branch-card .short-desc {
+    display: block;
+    margin: 1rem 0;
+    color: var(--dark-gray);
+}
+
+.branch-card.active .short-desc {
+    display: none;
+}
+
 .schedule-details {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    display: none;
     margin-top: 1rem;
-    opacity: 0;
 }
 
 .branch-card.active .schedule-details {
-    max-height: 300px;
-    opacity: 1;
-    transition: max-height 0.5s ease-in, opacity 0.3s ease-in;
+    display: block;
+    animation: fadeIn 0.3s ease;
 }
 
 .schedule-details h4 {
