@@ -258,6 +258,54 @@ nav {
     color: var(--secondary-color);
 }
 
+/* Coaches Section */
+.coaches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.coach-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.coach-card:hover {
+    transform: translateY(-5px);
+}
+
+.coach-card img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
+}
+
+.coach-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.coach-title {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.coach-nickname {
+    color: var(--dark-gray);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
 /* About Section */
 .about-content {
     max-width: 800px;
@@ -367,5 +415,15 @@ footer {
 
     .logo-img {
         height: 35px;
+    }
+
+    .coaches-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .coach-card img {
+        width: 150px;
+        height: 150px;
     }
 } 
