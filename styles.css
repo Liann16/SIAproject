@@ -28,6 +28,7 @@ header {
     top: 0;
     z-index: 1000;
     padding: 0.2rem 0;
+    height: 60px;
 }
 
 nav {
@@ -37,6 +38,7 @@ nav {
     padding: 0 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    height: 100%;
 }
 
 .logo {
@@ -51,14 +53,14 @@ nav {
 }
 
 .logo-img {
-    height: 25px;
+    height: 45px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
 
 .logo a:hover .logo-img {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .nav-links {
@@ -80,8 +82,8 @@ nav {
 
 /* Hero Section */
 #hero {
-    height: 80vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                 url('all2.png');
     background-size: cover;
     background-position: center;
@@ -91,42 +93,33 @@ nav {
     text-align: center;
     color: var(--white);
     padding: 0 1rem;
-    margin-top: 70px;
+    margin-top: 60px;
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 900px;
+    padding: 2rem;
 }
 
 .hero-text h1 {
-    font-size: 4.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
+    font-size: 4.8rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
 }
 
 .hero-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--white);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-text p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-/* Team Section */
-.team-photo {
-    margin: 2rem 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.full-width-img {
-    width: 100%;
-    height: auto;
-    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Programs Section */
@@ -157,12 +150,20 @@ nav {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     border: 2px solid transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.card.active {
+    transform: translateY(-5px);
     border-color: var(--primary-color);
 }
 
@@ -178,9 +179,49 @@ nav {
     font-size: 1.5rem;
 }
 
-.card p {
+.short-desc {
+    display: block;
+    margin-bottom: 1rem;
     color: var(--dark-gray);
     line-height: 1.6;
+}
+
+.detailed-desc {
+    display: none;
+    color: var(--dark-gray);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.card.active .short-desc {
+    display: none;
+}
+
+.card.active .detailed-desc {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.click-hint {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-top: 1rem;
+}
+
+.card.active .click-hint {
+    content: 'Click to show less';
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Branches Section */
@@ -301,7 +342,11 @@ footer {
     }
     
     .hero-text h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
+    }
+    
+    .hero-text p {
+        font-size: 1.2rem;
     }
     
     .section {
@@ -321,6 +366,6 @@ footer {
     }
 
     .logo-img {
-        height: 20px;
+        height: 35px;
     }
 } 
