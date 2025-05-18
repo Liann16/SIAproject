@@ -50,7 +50,7 @@ nav {
     display: flex;
     align-items: center;
     text-decoration: none;
-    gap: 10px;
+    gap: 5px;
 }
 
 .logo-img {
@@ -61,10 +61,11 @@ nav {
 }
 
 .logo-text {
-    font-size: 1.8rem;
+    font-size: 45px;
     font-weight: bold;
-    color: var(--primary-color);
+    color: #ff5c21;
     transition: color 0.3s ease;
+    line-height: 1;
 }
 
 .logo a:hover .logo-img {
@@ -272,60 +273,6 @@ nav {
     color: var(--secondary-color);
 }
 
-/* Coaches Section */
-.coaches-title {
-    color: var(--primary-color) !important;
-    font-size: 3.5rem !important;
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.coaches-list {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.coach-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    padding: 1rem;
-}
-
-.coach-item img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-}
-
-.coach-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-}
-
-.coach-info h3 {
-    color: var(--dark-gray);
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-.coach-info .coach-title {
-    color: var(--dark-gray);
-    font-size: 1.2rem;
-    margin-bottom: 0.3rem;
-}
-
-.coach-info .coach-nickname {
-    color: var(--dark-gray);
-    font-size: 1.2rem;
-}
-
 /* About Section */
 .about-content {
     max-width: 800px;
@@ -438,7 +385,7 @@ footer {
     }
 
     .logo-text {
-        font-size: 1.5rem;
+        font-size: 35px;
     }
 
     .coaches-title {
