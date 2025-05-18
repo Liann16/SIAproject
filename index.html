@@ -305,11 +305,20 @@
                        "Email: tmcgymnastic@gmail.com\n" +
                        "Facebook: @TMCGymnaticsAcademy";
             }
+            else if (lowerMessage.includes('enroll') || lowerMessage.includes('register') || lowerMessage.includes('sign up') || lowerMessage.includes('join')) {
+                return "To enroll in TMC Gymnastics Academy:\n\n" +
+                       "1. Choose your preferred branch\n" +
+                       "2. Contact us through:\n" +
+                       "   • Email: tmcgymnastic@gmail.com\n" +
+                       "   • Facebook: @TMCGymnaticsAcademy\n\n" +
+                       "Our staff will assist you with the enrollment process and provide program details.";
+            }
             else {
                 return "Thank you for your message! I can help you with:\n\n" +
                        "• Program information\n" +
                        "• Branch locations\n" +
-                       "• Contact details\n\n" +
+                       "• Contact details\n" +
+                       "• How to enroll\n\n" +
                        "What would you like to know more about?";
             }
         }
