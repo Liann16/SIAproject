@@ -50,6 +50,7 @@ nav {
     display: flex;
     align-items: center;
     text-decoration: none;
+    gap: 10px;
 }
 
 .logo-img {
@@ -59,8 +60,19 @@ nav {
     transition: transform 0.3s ease;
 }
 
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
 .logo a:hover .logo-img {
     transform: scale(1.1);
+}
+
+.logo a:hover .logo-text {
+    color: var(--secondary-color);
 }
 
 .nav-links {
@@ -88,7 +100,7 @@ nav {
     background-size: cover;
     background-position: center;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     text-align: center;
     color: var(--white);
@@ -99,14 +111,16 @@ nav {
 .hero-content {
     max-width: 900px;
     padding: 2rem;
+    margin-top: 15vh;
 }
 
 .hero-text h1 {
-    font-size: 4.8rem;
-    margin-bottom: 1rem;
+    font-size: 3.8rem;
+    margin-bottom: 1.5rem;
     color: var(--white);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-weight: bold;
+    line-height: 1.2;
 }
 
 .hero-text h2 {
@@ -392,7 +406,7 @@ footer {
     }
     
     .hero-text h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
     
     .hero-text h2 {
@@ -421,6 +435,10 @@ footer {
 
     .logo-img {
         height: 35px;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
     }
 
     .coaches-title {
