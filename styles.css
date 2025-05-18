@@ -33,15 +33,19 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 0.5rem 5%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.logo h1 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    font-weight: bold;
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
 }
 
 .nav-links {
@@ -63,8 +67,8 @@ nav {
 
 /* Hero Section */
 #hero {
-    height: 100vh;
-    background: linear-gradient(rgba(17, 21, 119, 0.9), rgba(17, 21, 119, 0.9)),
+    height: 80vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
                 url('https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
     background-size: cover;
     background-position: center;
@@ -74,41 +78,42 @@ nav {
     text-align: center;
     color: var(--white);
     padding: 0 1rem;
+    margin-top: 70px;
 }
 
 .hero-content {
     max-width: 800px;
 }
 
-.hero-content h1 {
-    font-size: 3.5rem;
+.hero-text h1 {
+    font-size: 4.5rem;
     margin-bottom: 0.5rem;
     color: var(--primary-color);
 }
 
-.hero-content h2 {
+.hero-text h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    color: var(--white);
 }
 
-.hero-content p {
+.hero-text p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
 
-.cta-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: var(--primary-color);
-    color: var(--white);
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: transform 0.3s ease;
+/* Team Section */
+.team-photo {
+    margin: 2rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.cta-button:hover {
-    transform: translateY(-3px);
+.full-width-img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Programs Section */
@@ -120,9 +125,10 @@ nav {
 
 .section h2 {
     text-align: center;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-size: 2.5rem;
     margin-bottom: 3rem;
+    text-transform: uppercase;
 }
 
 .program-cards {
@@ -139,10 +145,12 @@ nav {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .card:hover {
     transform: translateY(-10px);
+    border-color: var(--primary-color);
 }
 
 .card i {
@@ -152,7 +160,7 @@ nav {
 }
 
 .card h3 {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     margin-bottom: 1rem;
 }
 
@@ -162,12 +170,17 @@ nav {
     margin: 0 auto;
     text-align: center;
     font-size: 1.1rem;
+    padding: 0 1rem;
 }
 
 /* Contact Section */
 .contact-content {
     max-width: 600px;
     margin: 0 auto;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .contact-info {
@@ -189,10 +202,29 @@ nav {
 
 /* Footer */
 footer {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: var(--white);
     padding: 2rem;
     text-align: center;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
 /* Responsive Design */
@@ -201,11 +233,11 @@ footer {
         display: none;
     }
     
-    .hero-content h1 {
-        font-size: 2.5rem;
+    .hero-text h1 {
+        font-size: 3rem;
     }
     
-    .hero-content h2 {
+    .hero-text h2 {
         font-size: 1.8rem;
     }
     
@@ -215,5 +247,9 @@ footer {
     
     .program-cards {
         grid-template-columns: 1fr;
+    }
+
+    .logo-img {
+        height: 40px;
     }
 } 
