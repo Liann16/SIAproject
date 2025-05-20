@@ -269,7 +269,31 @@
             const chatMessages = document.getElementById('chatMessages');
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${type}`;
-            messageDiv.innerHTML = `<p>${message}</p>`;
+            
+            // Format message with proper line breaks and styling
+            const formattedMessage = message
+                .split('\n')
+                .map(line => {
+                    if (line.startsWith('•')) {
+                        return `<li>${line.substring(1).trim()}</li>`;
+                    } else if (line.match(/^\d+\./)) {
+                        return `<li>${line}</li>`;
+                    }
+                    return line;
+                })
+                .join('\n');
+            
+            // Wrap lists in ul tags if they exist
+            const finalMessage = formattedMessage.includes('<li>') 
+                ? formattedMessage.replace(/^(.+)$/gm, (match, p1) => {
+                    if (p1.includes('<li>')) {
+                        return `<ul>${p1}</ul>`;
+                    }
+                    return p1;
+                })
+                : formattedMessage;
+            
+            messageDiv.innerHTML = `<p>${finalMessage}</p>`;
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -279,46 +303,81 @@
             
             // Basic responses
             if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-                return "Hello! How can I assist you with TMC Gymnastics Academy? I can help you with program information, locations, and more!";
+                return "Hello! 👋 How can I assist you with TMC Gymnastics Academy? I can help you with:\n\n" +
+                       "• Program information\n" +
+                       "• Branch locations\n" +
+                       "• Contact details\n" +
+                       "• How to enroll";
             }
             else if (lowerMessage.includes('program') || lowerMessage.includes('class')) {
                 return "We offer three main programs:\n\n" +
-                       "1. Recreational Gymnastics - Fun and foundational classes for all ages\n" +
-                       "2. Competitive Team - Advanced training for competitive athletes\n" +
-                       "3. DepEd Team - Focused training for school competitions\n\n" +
+                       "1. Recreational Gymnastics\n" +
+                       "   • Fun and foundational classes for all ages\n" +
+                       "   • Perfect for beginners and enthusiasts\n\n" +
+                       "2. Competitive Team\n" +
+                       "   • Advanced training for competitive athletes\n" +
+                       "   • Level 1 and up\n\n" +
+                       "3. DepEd Team\n" +
+                       "   • Focused training for school competitions\n" +
+                       "   • Department of Education competitions\n\n" +
                        "For schedules and more details, please contact us directly!";
             }
             else if (lowerMessage.includes('location') || lowerMessage.includes('branch')) {
-                return "We have 5 branches:\n\n" +
-                       "• Malolos City (JCAS Gymnastics)\n" +
-                       "• Baliwag City (MDSF Gymnastics)\n" +
-                       "• Meycauayan City (Trinitas Gymnastics)\n" +
-                       "• Angeles City (WIS Gymnastics)\n" +
-                       "• Bacolor Pampanga (Bacolor Gymnastics)\n\n" +
-                       "For specific schedules and addresses, please contact us directly!";
+                return "We have 5 branches across the region:\n\n" +
+                       "1. Malolos City\n" +
+                       "   • JCAS Gymnastics\n" +
+                       "   • 112 Lucero St, Malolos, 3000 Bulacan\n\n" +
+                       "2. Baliwag City\n" +
+                       "   • MDSF Gymnastics\n" +
+                       "   • 090 Benigno S. Aquino Avenue, Baliwag, 3006 Bulacan\n\n" +
+                       "3. Meycauayan City\n" +
+                       "   • Trinitas Gymnastics\n" +
+                       "   • Jupiter St., 3A Meycauayan Camalig, 3020 Bulacan\n\n" +
+                       "4. Angeles City\n" +
+                       "   • WIS Gymnastics\n" +
+                       "   • 21-2 Fil-Am Friendship Hwy, Porac, Pampanga\n\n" +
+                       "5. Bacolor Pampanga\n" +
+                       "   • Bacolor Gymnastics\n" +
+                       "   • Don Bosco Homes Bacolor Pampanga\n\n" +
+                       "For specific schedules, please contact us directly!";
             }
             else if (lowerMessage.includes('cost') || lowerMessage.includes('price') || lowerMessage.includes('fee')) {
-                return "Program fees vary depending on the level and frequency. Please contact us at tmcgymnastic@gmail.com for detailed pricing information.";
+                return "Program fees vary depending on:\n\n" +
+                       "• Program type (Recreational/Competitive/DepEd)\n" +
+                       "• Training frequency\n" +
+                       "• Level of expertise\n\n" +
+                       "Please contact us at tmcgymnastic@gmail.com for detailed pricing information.";
             }
             else if (lowerMessage.includes('contact') || lowerMessage.includes('email')) {
-                return "You can reach us at:\n" +
-                       "Email: tmcgymnastic@gmail.com\n" +
-                       "Facebook: @TMCGymnaticsAcademy";
+                return "You can reach us through:\n\n" +
+                       "• Email: tmcgymnastic@gmail.com\n" +
+                       "• Facebook: @TMCGymnaticsAcademy\n\n" +
+                       "We typically respond within 24 hours.";
             }
             else if (lowerMessage.includes('enroll') || lowerMessage.includes('register') || lowerMessage.includes('sign up') || lowerMessage.includes('join')) {
-                return "To enroll in TMC Gymnastics Academy:\n\n" +
+                return "To enroll in TMC Gymnastics Academy, follow these steps:\n\n" +
                        "1. Choose your preferred branch\n" +
                        "2. Contact us through:\n" +
                        "   • Email: tmcgymnastic@gmail.com\n" +
                        "   • Facebook: @TMCGymnaticsAcademy\n\n" +
-                       "Our staff will assist you with the enrollment process and provide program details.";
+                       "3. Our staff will:\n" +
+                       "   • Guide you through the enrollment process\n" +
+                       "   • Provide program details\n" +
+                       "   • Help you choose the right schedule";
             }
             else {
-                return "Thank you for your message! I can help you with:\n\n" +
-                       "• Program information\n" +
-                       "• Branch locations\n" +
-                       "• Contact details\n" +
-                       "• How to enroll\n\n" +
+                return "I can help you with the following information:\n\n" +
+                       "1. Programs\n" +
+                       "   • Recreational Gymnastics\n" +
+                       "   • Competitive Team\n" +
+                       "   • DepEd Team\n\n" +
+                       "2. Locations\n" +
+                       "   • 5 branches across the region\n" +
+                       "   • Detailed addresses and schedules\n\n" +
+                       "3. Enrollment\n" +
+                       "   • How to join\n" +
+                       "   • Program fees\n" +
+                       "   • Contact information\n\n" +
                        "What would you like to know more about?";
             }
         }
