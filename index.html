@@ -269,31 +269,59 @@
             const chatMessages = document.getElementById('chatMessages');
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${type}`;
-            
-            // Format message with proper line breaks and styling
-            const formattedMessage = message
-                .split('\n')
-                .map(line => {
-                    if (line.startsWith('•')) {
-                        return `<li>${line.substring(1).trim()}</li>`;
-                    } else if (line.match(/^\d+\./)) {
-                        return `<li>${line}</li>`;
+
+            // Parse message into HTML with nested lists and paragraphs
+            function parseMessageToHTML(msg) {
+                const lines = msg.split('\n');
+                let html = '';
+                let inOl = false;
+                let inUl = false;
+                let inSubUl = false;
+                lines.forEach((line, idx) => {
+                    const trimmed = line.trim();
+                    if (/^\d+\./.test(trimmed)) { // Numbered list
+                        if (!inOl) { html += '<ol>'; inOl = true; }
+                        if (inUl) { html += '</ul>'; inUl = false; }
+                        html += `<li>${trimmed.replace(/^\d+\.\s*/, '')}`;
+                        // Check if next line is a sub-bullet
+                        if (lines[idx + 1] && lines[idx + 1].trim().startsWith('•')) {
+                            html += '<ul>';
+                            inSubUl = true;
+                        }
+                        html += '</li>';
+                    } else if (trimmed.startsWith('•')) { // Bullet list
+                        if (!inUl && !inSubUl) { html += '<ul>'; inUl = true; }
+                        html += `<li>${trimmed.replace(/^•\s*/, '')}</li>`;
+                        // If previous was a numbered list and this is a sub-bullet, keep inSubUl true
+                        if (inOl && !inSubUl && idx > 0 && /^\d+\./.test(lines[idx - 1].trim())) {
+                            html += '<ul>';
+                            inSubUl = true;
+                        }
+                        // If next is not a bullet, close sub-ul
+                        if (inSubUl && (!lines[idx + 1] || !lines[idx + 1].trim().startsWith('•'))) {
+                            html += '</ul>';
+                            inSubUl = false;
+                        }
+                    } else if (trimmed.length === 0) {
+                        // Blank line, treat as paragraph break
+                        if (inUl) { html += '</ul>'; inUl = false; }
+                        if (inOl) { html += '</ol>'; inOl = false; }
+                        if (inSubUl) { html += '</ul>'; inSubUl = false; }
+                    } else {
+                        // Normal text
+                        if (inUl) { html += '</ul>'; inUl = false; }
+                        if (inOl) { html += '</ol>'; inOl = false; }
+                        if (inSubUl) { html += '</ul>'; inSubUl = false; }
+                        html += `<p>${trimmed}</p>`;
                     }
-                    return line;
-                })
-                .join('\n');
-            
-            // Wrap lists in ul tags if they exist
-            const finalMessage = formattedMessage.includes('<li>') 
-                ? formattedMessage.replace(/^(.+)$/gm, (match, p1) => {
-                    if (p1.includes('<li>')) {
-                        return `<ul>${p1}</ul>`;
-                    }
-                    return p1;
-                })
-                : formattedMessage;
-            
-            messageDiv.innerHTML = `<p>${finalMessage}</p>`;
+                });
+                if (inUl) html += '</ul>';
+                if (inOl) html += '</ol>';
+                if (inSubUl) html += '</ul>';
+                return html;
+            }
+
+            messageDiv.innerHTML = parseMessageToHTML(message);
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
